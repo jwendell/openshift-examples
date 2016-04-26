@@ -38,7 +38,10 @@ public class Delay extends HttpServlet {
                 out.flush();
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                out.println("Got interrupted while sleeping. Dumping stack trace...");
+                e.printStackTrace(out);
+                out.flush();
+                break;
             }
         }
 
